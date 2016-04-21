@@ -1,7 +1,12 @@
-This is a simple bash script which gives you the current availability of any train. --> IMP: Currently script will show proper output if seats are available else if ticket is in waiting list or train does not run on that day/any other issue then the script wont show proper errors
+This is a simple bash script which gives you the current seat availability of any train. 
 Note: this script is basically designed for UNIX/LINUX systems.On windows you will have to install Cygwin(http://stackoverflow.com/questions/6413377/is-there-a-way-to-run-bash-scripts-on-windows)
-First unzip the erail.zip file using : "unzip erail.zip"(without quotes" and then do : cd erail  and then bash erail.sh
-and then specify train number,source station code and destination station code(in capital letters), specify the type of coach you want,then specify the date(only the date), then the  month number
+
+There are 2 ways to run the script. One is to fix the train specifications i.e when you want to check for a particular train, for that you can do : cd erail  and then edit the myerail.sh file via vim/sublime/gedit etc. Put your train specifications in that order by replacing the value of each of the variables:specify train number,source station code and destination station code(in capital letters), specify the type of coach you want,then specify the date(only the date), then the  month number,and then limit below which notifications for low availabilty start( Refer below example ). You can use crontabs to run this script automatially whenever you want
+Refer : http://www.thegeekstuff.com/2009/06/15-practical-crontab-examples/
+
+
+The second way is to input these tarin specifications by hand. For that,do : cd erail  and then bash erail.sh
+and then specify train number,source station code and destination station code(in capital letters), specify the type of coach you want,then specify the date(only the date), then the  month number,and then limit below which notifications for low availabilty start
 One sample Example is as follows:
 57563
 HYB
@@ -9,7 +14,10 @@ NED
 SL
 18
 2
-which represents train number 57563 from hyderabad to nanded sleeper class on 18 th feb 2016.Currently the script works for General QUOTA of reservation.If availabilty is less than or equal to a specified number,a desktop notification is displayed and also an email is sent but currently because the requests go through a proxy server so the mail sytem works only for my college's email addresses.Configuring SMTP will helpto overcome this problem
---> Developed by Mandar Gondhalekar
---> any comments/views are welcome.You can contact me on m.g.g@live.com 
+20
+which represents train number 57563 from hyderabad to nanded sleeper class on 18 th feb 2016.Currently the script works for General QUOTA of reservation.If availabilty is less than or equal to a specified number(20 here above) or RAC or WL ,a desktop notification is displayed and also an email is sent but currently the mail feature is not working because of some issues though if you use crontab email feature is embedded in it.
+
+
+Developed by Mandar Gondhalekar
+Any comments/views are welcome.You can contact me on m.g.g@live.com 
 
