@@ -19,5 +19,6 @@ which represents train number 57563 from hyderabad to nanded sleeper class on 18
 
 
 Developed by Mandar Gondhalekar
+Tools used :cURL requests and their parsing via grep and awk commands
 Any comments/views are welcome.You can contact me on m.g.g@live.com 
 
