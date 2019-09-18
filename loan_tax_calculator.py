@@ -36,6 +36,13 @@ print "monthly emi is Rs {emi}".format(emi=monthly_emi)
 total_months = 12* years
 total_tax_benefit = 0
 
+if loan_start_month < 3:
+    financial_year_start = loan_start_year - 1
+    financial_year_end = loan_start_year
+else:
+    financial_year_start = loan_start_year
+    financial_year_end = loan_start_year + 1
+
 '''
 Calculation for first and last year is a bit different than rest
 '''
@@ -51,7 +58,9 @@ for each_month in range(1,total_months+1):
     monthly_principal_payment = monthly_emi - monthly_interest_payment
     loan_amount_copy =  loan_amount_copy - monthly_principal_payment
     if each_month == first_year_months_before_fy_start:
-        print "First FY Year ended"
+        print "First FY Year {start}-{end} ended".format(start=financial_year_start,end=financial_year_end)
+        financial_year_start = financial_year_start + 1
+        financial_year_end = financial_year_end + 1
         year_count = year_count + 1
         first_year_principal_amount = monthly_principal_payment * first_year_months_before_fy_start
         first_year_interest_amount = monthly_interest_payment * first_year_months_before_fy_start
@@ -66,7 +75,9 @@ for each_month in range(1,total_months+1):
     
     elif each_month == first_year_months_before_fy_start + 12*year_count:
         year_count = year_count + 1
-        print "FY year {y} ended".format(y=year_count)
+        print "FY year {y} {start}-{end} ended".format(y=year_count,start=financial_year_start,end=financial_year_end)
+        financial_year_start = financial_year_start + 1
+        financial_year_end  = financial_year_end + 1
         this_year_principal_amount = monthly_principal_payment * year_months
         this_year_interest_amount = monthly_interest_payment * year_months
         print "You paid Rs {p} as Principal amount ".format(p=this_year_principal_amount)
